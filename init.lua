@@ -659,16 +659,33 @@ require('lazy').setup({
       }
     end,
   },
+
   -- Neo-tree.nvim
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
+    -- This 'cmd' key makes it load on-demand, improving startup time.
+    cmd = 'Neotree',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
-      'nvim-tree/nvim-web-devicons', -- optional, but recommended
+      'nvim-tree/nvim-web-devicons', -- Recommended icons
+
+      -- ADDED: For LSP-powered file operations (rename, move, etc.)
+      'antosha417/nvim-lsp-file-operations',
+
+      -- ADDED: For image previews in the 'preview' window
+      '3rd/image.nvim', -- Or you could use 'folke/snacks.nvim'
+
+      -- ADDED: For the 'open_with_window_picker' commands
+      's1n7ax/nvim-window-picker',
     },
-    lazy = false, -- neo-tree will lazily load itself
+    -- config = function()
+    --   -- Your neo-tree setup options go here
+    --   require('neo-tree').setup({
+    --     -- ...
+    --   })
+    -- end,
   },
 
   { -- Autoformat
